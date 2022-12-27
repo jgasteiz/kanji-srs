@@ -34,3 +34,9 @@ class Level(BaseModel):
 
     def get_random_kanji(self) -> Kanji:
         return random.choice(self.groups).get_random_kanji()
+
+    def get_group(self, group_index: int) -> Group:
+        """
+        Raises IndexError if a group for the given index can't be found.
+        """
+        return [_ for _ in self.groups if _.index == group_index][0]
